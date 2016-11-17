@@ -7,14 +7,42 @@
 
   Esta libreria define las siguientes funciones:
   ```code
-       void fft_input(const int16_t *, complex_t *);
-       void fft_execute(complex_t *);
-       void fft_output(complex_t *, uint16_t *);
-       void capture(int16_t*, uint8_t);
-       void fft(uint16_t *);
+       /**
+       * Computa las muestras a valores complejos.
+       * @param const uint16_t * samples, entrada de 64 muestras.
+       * @param complex_t* out, salida de 64 numeros complejos.
+       **/
+       void fft_input(const int16_t *samples, complex_t *out);
+
+       /**
+       * Procesa los valores complejos.
+       * @param complex_t *input, entrada de la funcion, usualmente es la salida de la funcion fft_input.
+       **/
+       void fft_execute(complex_t *input);
+
+       /**
+       * Transforma los valores complejos a espectro.
+       * @param complex_t *input, entrada de la funcion, usualmente es la salida de la funcion fft_execute.
+       * @param uint16_t *spectrum, salida de la funcion.
+       **/
+       void fft_output(complex_t *intput, uint16_t *spectrum);
+
+       /**
+       * Captura n_samples del microfono y lo almacena en el parametro out.
+       * @param int16_t *out, vector de tamanio n_samples donde se almacena la salida.
+       * @param uint8_t n_samples, cantidad de muestras a tomar.
+       **/
+       void capture(int16_t *out, uint8_t n_samples);
+
+       /**
+       * Rutina que llama todas las funciones anteriores y retorna el spectro con 32 entradas
+       * @param uint16_t *spectrum, salida del proceso de fft con muestras 32
+       */
+       void fft(uint16_t *spectrum);
   ```
   Ademas define los siguientes tipos de datos:
   ```code
+    // Estructura de datos para representar numeros complejos
     typedef struct {
       int16_t r;
       int16_t i;
