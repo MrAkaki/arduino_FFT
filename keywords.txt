@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map For ArduinoFFT
+# Syntax Coloring Map For FFT(ATMEGA328 ATMEGA32UA)
 #######################################
 
 #######################################
