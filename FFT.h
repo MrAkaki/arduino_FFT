@@ -11,12 +11,13 @@ typedef struct {
 } complex_t;
 
 extern "C" { // In ffft.S
-  void fft_input(const int16_t *, complex_t *),
-       fft_execute(complex_t *),
-       fft_output(complex_t *, uint16_t *);
+  void fft_input(const int16_t *, complex_t *);
+  void fft_execute(complex_t *);
+  void fft_output(complex_t *, uint16_t *);
 }
 
-capture(int16_t *buf, uint8_t nSamples) {
+
+void capture(int16_t *buf, uint8_t nSamples) {
   uint8_t admux_save, adcsra_save, adcsrb_save, timsk0_save, channel;
   int16_t adc;
   channel     = analogPinToChannel(MIC_PIN); // Pin A4 to ADC channel
